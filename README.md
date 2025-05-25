@@ -50,6 +50,13 @@ Para instalar y ejecutar este juego en sistemas MacOS o Linux, sigue los siguien
     g++ main.cpp $(pkg-config --cflags --libs sdl2) -o game-project
     ```
 
+    Si al momento de compilación obtienes un error que mencione algo relacionado que no puede encontrar **SDL.h**, entonces tendremos que incluir los headers SDL de la siguiente forma:
+    ```cpp
+    //...
+    #include <SDL2/SDL.h>
+    //...
+    ```
+
 ## Ejecutar el juego
 
 Una vez compilado, puedes ejecutar el juego desde la terminal:
