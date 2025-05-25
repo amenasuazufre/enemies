@@ -16,11 +16,10 @@ Para instalar y ejecutar este juego en sistemas MacOS o Linux, sigue los siguien
     Abre una terminal y clona el repositorio del juego:
 
     ```bash
-    git clone <URL_DEL_REPOSITORIO>
+    git clone git@github.com:codinSamueldev/game-project.git
     cd game-project
     ```
 
-    *(Reemplaza `<URL_DEL_REPOSITORIO>` con la URL real del repositorio)*
 
 2.  **Instalar dependencias (lib-sdl):**
 
@@ -50,8 +49,6 @@ Para instalar y ejecutar este juego en sistemas MacOS o Linux, sigue los siguien
     ```bash
     g++ main.cpp $(pkg-config --cflags --libs sdl2) -o game-project
     ```
-
-    *(Este comando asume que tu archivo principal se llama `main.cpp`. Ajusta si es necesario).*
 
 ## Ejecutar el juego
 
