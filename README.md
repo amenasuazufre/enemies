@@ -357,7 +357,7 @@ gdb ./juego_educativo_debug
 
 - **Lenguaje**: C++11 o superior
 - **Estilo**: Comentarios en español
-- **Nomenclatura**: CamelCase para clases, camelCase para métodos
+- **Nomenclatura**: PascalCase para clases, camelCase para métodos
 - **Documentación**: Comentarios descriptivos en todas las funciones
 
 ### 🐛 **Reportar Bugs**
