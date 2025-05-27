@@ -1,67 +1,127 @@
-# game-project
-Juego interactivo hecho en C++ para aprender algo nuevo en cada nivel.
+# 🎮 Juego Educativo de Plataformas
 
-Este es un juego de plataformas inspirado en clásicos como Mario, con una mecánica única centrada en la educación. En lugar de los elementos tradicionales de los juegos de plataformas, encontrarás cubos interactivos a lo largo de los niveles.
+## 📋 Descripción
+Juego de plataformas educativo desarrollado en C++ con SDL2. El juego incluye dos niveles temáticos: matemáticas (valor absoluto) e historia (Antigua Grecia).
 
-Al interactuar con estos cubos, se revelará información educativa en diversas áreas del conocimiento, como matemáticas, literatura, filosofía y más. Por ejemplo, un cubo podría explicar de forma sencilla cómo calcular el valor absoluto de un número, o argumentar por qué el debate es fundamental para el desarrollo del pensamiento crítico.
+## 🚀 Estado Actual del Desarrollo
 
-El juego está desarrollado en C++ y utiliza principalmente la librería **lib-sdl** para los gráficos y la interactividad.
+### ✅ Completado
+- **Configuración base del proyecto**
+  - Estructura de archivos organizada
+  - Makefile funcional
+  - Inicialización de SDL2
 
-## Instalación en MacOS/Linux
+- **Sistema de juego principal**
+  - Clase Juego con gestión de estados
+  - Loop principal del juego
+  - Manejo de eventos básico
+  - Menú principal
+  - Pantalla final
 
-Para instalar y ejecutar este juego en sistemas MacOS o Linux, sigue los siguientes pasos:
+- **Mecánicas básicas implementadas**
+  - Clase Jugador con física completa
+    - Movimiento horizontal (flechas izquierda/derecha)
+    - Salto (flecha arriba o espacio)
+    - Gravedad y colisiones
+    - Sistema de fricción
+  - Clase Plataforma con detección de colisiones
+  - Clase Nivel1 completamente funcional
+    - 7 plataformas distribuidas verticalmente
+    - Sistema de colisiones jugador-plataforma
+    - Detección de meta (objetivo del nivel)
+    - Reinicio automático al morir
+    - Reinicio manual con tecla 'R'
 
-1.  **Clonar el repositorio:**
+### 🎮 Controles Actuales
+- **Menú Principal:** ESPACIO para comenzar
+- **En el juego:**
+  - ⬅️➡️ Flechas: Movimiento horizontal
+  - ⬆️ Flecha o ESPACIO: Salto
+  - R: Reiniciar nivel
+- **Pantalla Final:** ESC para salir
 
-    Abre una terminal y clona el repositorio del juego:
+### 🎯 Nivel 1: "El Valle del Terror Absoluto"
+- **Tema:** Matemáticas - Valor Absoluto
+- **Objetivo:** Llegar a la plataforma dorada en la parte superior
+- **Mecánicas:** Saltar entre plataformas evitando caer
+- **Diseño:** 7 plataformas en disposición vertical ascendente
 
-    ```bash
-    git clone git@github.com:codinSamueldev/game-project.git
-    cd game-project
-    ```
+## 🛠️ Compilación y Ejecución
 
+### Requisitos
+- g++ con soporte C++11
+- SDL2 development libraries
 
-2.  **Instalar dependencias (lib-sdl):**
-
-    Necesitas tener instalada la librería SDL2 y sus módulos de desarrollo. La forma de instalarla varía ligeramente dependiendo de tu sistema operativo y gestor de paquetes:
-
-    *   **En MacOS (usando Homebrew):**
-
-        Si no tienes Homebrew instalado, puedes seguir las instrucciones en [https://brew.sh/](https://brew.sh/). Una vez que tengas Homebrew, abre la terminal y ejecuta:
-
-        ```bash
-        brew install sdl2
-        ```
-
-    *   **En sistemas basados en Debian/Ubuntu:**
-
-        Abre la terminal y ejecuta:
-
-        ```bash
-        sudo apt update
-        sudo apt install libsdl2-dev
-        ```
-
-3.  **Compilar el juego:**
-
-    Una vez que tengas las dependencias instaladas, navega a la carpeta del proyecto (`game-project`) en la terminal (si no lo hiciste ya en el paso 1) y compila el código fuente. Necesitarás un compilador de C++ (como g++). Puedes compilar usando `pkg-config` para encontrar las flags de compilación de SDL2:
-
-    ```bash
-    g++ main.cpp $(pkg-config --cflags --libs sdl2) -o game-project
-    ```
-    
-> [!WARNING]
-> Si al momento de compilación obtienes un error que mencione algo relacionado que no puede encontrar **SDL.h**, entonces tendremos que incluir los headers SDL de la siguiente forma:
-> ```cpp
-> //...
-> #include <SDL2/SDL.h>
-> //...
-> ```
-
-## Ejecutar el juego
-
-Una vez compilado, puedes ejecutar el juego desde la terminal:
-
+### Instalación de dependencias (Ubuntu/Debian)
 ```bash
-./game-project
+make install-deps
 ```
+
+### Compilar
+```bash
+make
+```
+
+### Ejecutar
+```bash
+make run
+# o directamente:
+./juego_educativo
+```
+
+### Limpiar archivos compilados
+```bash
+make clean
+```
+
+## 📁 Estructura del Proyecto
+```
+game-project/
+├── src/
+│   ├── main.cpp           # Punto de entrada del programa
+│   ├── Juego.h/.cpp       # Clase principal del juego
+│   ├── Jugador.h/.cpp     # Mecánicas del personaje
+│   ├── Plataforma.h/.cpp  # Plataformas del nivel
+│   ├── Nivel1.h/.cpp      # Lógica específica del Nivel 1
+│   └── [más clases...]
+├── Makefile               # Sistema de compilación
+├── README.md              # Este archivo
+└── requerimientos.md      # Plan detallado del proyecto
+```
+
+## 🔄 Próximos Pasos
+1. **Elementos adicionales del juego:**
+   - Clase Enemigo (rectángulos rojos que se mueven)
+   - Clase CuboEducativo (información al colisionar)
+   - Sistema de paneles educativos
+
+2. **Sistema educativo:**
+   - Panel lateral con contenido de matemáticas
+   - Sistema de preguntas al completar nivel
+   - Archivos de contenido educativo
+
+3. **Nivel 2:**
+   - Implementación del segundo nivel (Historia - Antigua Grecia)
+   - Nuevas mecánicas y diseño de plataformas
+
+4. **Mejoras visuales:**
+   - Efectos visuales adicionales
+   - Mejor feedback visual
+   - Animaciones simples
+
+## 🎨 Estilo Visual
+- **Estilo:** Pixel Art Retro Simplificado
+- **Colores:** Paleta limitada de 12-16 colores
+- **Elementos:** Formas geométricas (rectángulos) con bordes definidos
+- **Jugador:** Rectángulo azul (32x32 px)
+- **Plataformas:** Rectángulos verdes con decoración
+- **Meta:** Rectángulo dorado
+
+## 👨‍💻 Desarrollo
+- **Lenguaje:** C++11
+- **Biblioteca gráfica:** SDL2
+- **Arquitectura:** Orientada a objetos con separación clara de responsabilidades
+- **Comentarios:** En español para mejor legibilidad del código
+
+---
+*Desarrollado como proyecto educativo de programación en C++ con SDL2*
