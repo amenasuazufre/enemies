@@ -168,20 +168,46 @@ void Juego::renderizarMenuPrincipal() {
     SDL_SetRenderDrawColor(renderizador, 30, 30, 80, 255);
     SDL_RenderClear(renderizador);
     
-    // Título del juego (simulado con rectángulos)
-    SDL_SetRenderDrawColor(renderizador, 255, 255, 255, 255);
+    // Título principal
+    TextoSimple::establecerColor(renderizador, 255, 255, 255);
+    TextoSimple::renderizarTextoCentrado(renderizador, "JUEGO EDUCATIVO", 400, 80, 42);
+    TextoSimple::renderizarTextoCentrado(renderizador, "DE PLATAFORMAS", 400, 130, 42);
     
-    // Rectángulo para simular el título
-    SDL_Rect tituloRect = {200, 150, 400, 80};
-    SDL_RenderDrawRect(renderizador, &tituloRect);
+    // Subtítulo
+    TextoSimple::establecerColor(renderizador, 200, 200, 255);
+    TextoSimple::renderizarTextoCentrado(renderizador, "Aprende mientras juegas", 400, 190, 24);
     
-    // Instrucciones (simulado con rectángulos)
-    SDL_Rect instruccionRect = {250, 300, 300, 40};
-    SDL_RenderDrawRect(renderizador, &instruccionRect);
+    // Información de niveles
+    TextoSimple::establecerColor(renderizador, 255, 215, 0);
+    TextoSimple::renderizarTextoCentrado(renderizador, "NIVEL 1: EL VALLE DEL TERROR ABSOLUTO", 400, 250, 20);
+    TextoSimple::establecerColor(renderizador, 150, 255, 150);
+    TextoSimple::renderizarTextoCentrado(renderizador, "Tema: Matematicas - Valor Absoluto", 400, 280, 18);
     
-    // Texto simulado "PRESIONA ESPACIO PARA COMENZAR"
-    SDL_Rect textoRect = {200, 400, 400, 30};
-    SDL_RenderDrawRect(renderizador, &textoRect);
+    // Controles del juego
+    TextoSimple::establecerColor(renderizador, 255, 255, 255);
+    TextoSimple::renderizarTextoCentrado(renderizador, "CONTROLES:", 400, 330, 24);
+    
+    TextoSimple::establecerColor(renderizador, 200, 200, 200);
+    TextoSimple::renderizarTexto(renderizador, "Flechas", 200, 360, 18);
+    TextoSimple::renderizarTexto(renderizador, "Movimiento horizontal", 350, 360, 18);
+    
+    TextoSimple::renderizarTexto(renderizador, "Flecha arriba o ESPACIO", 200, 385, 18);
+    TextoSimple::renderizarTexto(renderizador, "Saltar", 500, 385, 18);
+    
+    TextoSimple::renderizarTexto(renderizador, "R", 200, 410, 18);
+    TextoSimple::renderizarTexto(renderizador, "Reiniciar nivel", 350, 410, 18);
+    
+    // Objetivo
+    TextoSimple::establecerColor(renderizador, 255, 215, 0);
+    TextoSimple::renderizarTextoCentrado(renderizador, "OBJETIVO: Llega a la plataforma dorada", 400, 450, 20);
+    
+    // Instrucción para comenzar
+    TextoSimple::establecerColor(renderizador, 255, 100, 100);
+    TextoSimple::renderizarTextoCentrado(renderizador, "PRESIONA ESPACIO PARA COMENZAR", 400, 520, 28);
+    
+    // Créditos
+    TextoSimple::establecerColor(renderizador, 100, 100, 150);
+    TextoSimple::renderizarTextoCentrado(renderizador, "Desarrollado en C++ con SDL2", 400, 570, 14);
 }
 
 void Juego::renderizarPantallaFinal() {
@@ -189,14 +215,39 @@ void Juego::renderizarPantallaFinal() {
     SDL_SetRenderDrawColor(renderizador, 255, 215, 0, 255);
     SDL_RenderClear(renderizador);
     
-    // Rectángulo para felicitaciones
-    SDL_SetRenderDrawColor(renderizador, 0, 0, 0, 255);
-    SDL_Rect felicitacionesRect = {150, 200, 500, 100};
-    SDL_RenderDrawRect(renderizador, &felicitacionesRect);
+    // Título de felicitaciones
+    TextoSimple::establecerColor(renderizador, 0, 0, 0);
+    TextoSimple::renderizarTextoCentrado(renderizador, "FELICITACIONES", 400, 100, 48);
     
-    // Rectángulo para créditos
-    SDL_Rect creditosRect = {200, 350, 400, 150};
-    SDL_RenderDrawRect(renderizador, &creditosRect);
+    // Mensaje de completado
+    TextoSimple::establecerColor(renderizador, 50, 50, 50);
+    TextoSimple::renderizarTextoCentrado(renderizador, "Has completado el Nivel 1", 400, 170, 28);
+    TextoSimple::renderizarTextoCentrado(renderizador, "EL VALLE DEL TERROR ABSOLUTO", 400, 210, 24);
+    
+    // Información educativa
+    TextoSimple::establecerColor(renderizador, 100, 50, 0);
+    TextoSimple::renderizarTextoCentrado(renderizador, "Aprendiste sobre:", 400, 270, 22);
+    TextoSimple::renderizarTextoCentrado(renderizador, "Matematicas - Valor Absoluto", 400, 300, 20);
+    
+    // Estadísticas del juego
+    TextoSimple::establecerColor(renderizador, 0, 100, 0);
+    TextoSimple::renderizarTextoCentrado(renderizador, "Habilidades desarrolladas:", 400, 350, 18);
+    TextoSimple::renderizarTextoCentrado(renderizador, "- Coordinacion y reflejos", 400, 375, 16);
+    TextoSimple::renderizarTextoCentrado(renderizador, "- Resolucion de problemas", 400, 395, 16);
+    TextoSimple::renderizarTextoCentrado(renderizador, "- Perseverancia", 400, 415, 16);
+    
+    // Próximos pasos
+    TextoSimple::establecerColor(renderizador, 150, 0, 150);
+    TextoSimple::renderizarTextoCentrado(renderizador, "Proximamente: Nivel 2", 400, 460, 20);
+    TextoSimple::renderizarTextoCentrado(renderizador, "Las Ruinas de la Sabiduria Antigua", 400, 485, 18);
+    
+    // Instrucción para salir
+    TextoSimple::establecerColor(renderizador, 200, 0, 0);
+    TextoSimple::renderizarTextoCentrado(renderizador, "Presiona ESC para salir", 400, 530, 22);
+    
+    // Créditos
+    TextoSimple::establecerColor(renderizador, 100, 100, 100);
+    TextoSimple::renderizarTextoCentrado(renderizador, "Gracias por jugar", 400, 570, 16);
 }
 
 void Juego::limpiar() {

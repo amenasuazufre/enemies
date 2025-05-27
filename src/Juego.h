@@ -10,6 +10,7 @@
 #include <string>
 #include "Jugador.h"
 #include "Nivel1.h"
+#include "TextoSimple.h"
 
 // Constantes del juego
 const int ANCHO_VENTANA = 800;
