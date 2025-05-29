@@ -10,12 +10,16 @@
 #include <vector>
 #include "Jugador.h"
 #include "Plataforma.h"
+#include "CuboEducativo.h"
+#include "PanelLateral.h"
 
 class Nivel1 {
 private:
     // Elementos del nivel
     Jugador* jugador;
     std::vector<Plataforma> plataformas;
+    std::vector<CuboEducativo> cubosEducativos;
+    PanelLateral panelLateral;
     
     // Estado del nivel
     bool nivelCompletado;
@@ -27,7 +31,9 @@ private:
     
     // Métodos privados
     void crearPlataformas();
+    void crearCubosEducativos();
     void verificarColisionesPlataformas();
+    void verificarColisionesCubos();
     void verificarLimitesNivel();
 
 public:
