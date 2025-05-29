@@ -17,8 +17,8 @@ Jugador::Jugador() {
     
     // Constantes de física
     gravedad = 0.8f;
-    fuerzaSalto = -15.0f;
-    velocidadMovimiento = 5.0f;
+    fuerzaSalto = -16.0f;
+    velocidadMovimiento = 10.0f;
     
     enSuelo = false;
     saltando = false;
