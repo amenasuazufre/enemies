@@ -15,7 +15,7 @@
 // Constantes del juego
 const int ANCHO_VENTANA = 800;
 const int ALTO_VENTANA = 600;
-const std::string TITULO_VENTANA = "Juego Educativo de Plataformas";
+const std::string TITULO_VENTANA = "LEVEL UP!";
 
 // Estados del juego
 enum EstadoJuego {

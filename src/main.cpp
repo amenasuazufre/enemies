@@ -1,6 +1,6 @@
 /*
  * Juego Educativo de Plataformas
- * Desarrolladores: [Tu nombre aquí]
+ * Desarrolladores: Samuel Henao - Samuel Quiñonez
  * Tecnología: C++ con SDL2
  * 
  * Archivo principal del juego
