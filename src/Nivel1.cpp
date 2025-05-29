@@ -242,7 +242,7 @@ void Nivel1::crearCubosEducativos() {
     // Cubo 1 - Definición de Valor Absoluto (en plataforma 1)
     cubosEducativos.push_back(CuboEducativo(
         175, 455, // Posición en plataforma 1
-        "VALOR ABSOLUTO: El valor absoluto de un numero es su distancia al cero en la recta numerica, sin importar la direccion. Se representa con barras verticales |x|. Ejemplo: |5| = 5 y |-5| = 5."
+        "El valor absoluto de un numero es su distancia al cero en la recta numerica, sin importar la direccion. Ejemplo: abs(5)=5 y abs(-5)=5."
     ));
     
     // Cubo 2 - Propiedades del Valor Absoluto (en plataforma 2)

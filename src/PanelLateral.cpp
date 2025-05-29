@@ -10,13 +10,13 @@
 using namespace std;
 
 PanelLateral::PanelLateral() {
-    x = 550; // Lado derecho de la pantalla (800 - 250)
-    y = 100; // Centrado verticalmente
-    ancho = 250;
-    alto = 400;
+    x = 500; // Lado derecho de la pantalla (800 - 250)
+    y = 420; // Centrado verticalmente
+    ancho = 280;
+    alto = 180;
     visible = false;
     tiempoInicio = 0;
-    duracionMostrar = 5000; // 5 segundos en milisegundos
+    duracionMostrar = 3000; // 3 segundos en milisegundos
     informacion = "";
 }
 
