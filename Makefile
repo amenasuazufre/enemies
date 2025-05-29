@@ -2,8 +2,8 @@
 # Compilador y flags
 
 CXX = g++
-CXXFLAGS = -std=c++11 -Wall -Wextra -O2
-LIBS = -lSDL2 -lSDL2main
+CXXFLAGS = -std=c++11 -Wall -Wextra -O2 $(shell pkg-config --cflags sdl2 SDL2_ttf)
+LIBS = $(shell pkg-config --libs sdl2 SDL2_ttf) -lSDL2main
 
 # Directorios
 SRC_DIR = src
@@ -43,12 +43,12 @@ run: $(TARGET)
 # Instalar dependencias (Ubuntu/Debian)
 install-deps:
 	sudo apt-get update
-	sudo apt-get install libsdl2-dev libsdl2-2.0-0
+	sudo apt-get install -y libsdl2-dev libsdl2-2.0-0 libsdl2-ttf-dev
 
-# Verificar instalación de SDL2
+# Verificar instalación de SDL2 y SDL2_ttf
 check-sdl:
-	@echo "Verificando instalación de SDL2..."
-	@pkg-config --exists sdl2 && echo "SDL2 encontrado" || echo "SDL2 NO encontrado - ejecuta 'make install-deps'"
+	@echo "Verificando instalación de SDL2 y SDL2_ttf..."
+	@pkg-config --exists sdl2 SDL2_ttf && echo "SDL2 y SDL2_ttf encontrados" || echo "SDL2 o SDL2_ttf NO encontrados - ejecuta 'make install-deps'"
 
 # Reglas que no son archivos
 .PHONY: all clean run install-deps check-sdl
@@ -59,6 +59,6 @@ help:
 	@echo "  make          - Compilar el juego"
 	@echo "  make run      - Compilar y ejecutar el juego"
 	@echo "  make clean    - Limpiar archivos compilados"
-	@echo "  make install-deps - Instalar dependencias SDL2"
-	@echo "  make check-sdl    - Verificar instalación de SDL2"
+	@echo "  make install-deps - Instalar dependencias SDL2 y SDL2_ttf"
+	@echo "  make check-sdl    - Verificar instalación de SDL2 y SDL2_ttf"
 	@echo "  make help     - Mostrar esta ayuda"
