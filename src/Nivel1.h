@@ -7,6 +7,7 @@
 #define NIVEL1_H
 
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
 #include <vector>
 #include "Jugador.h"
 #include "Plataforma.h"
@@ -41,7 +42,7 @@ public:
     ~Nivel1();
     
     // Métodos principales
-    void inicializar(Jugador* jugadorRef);
+    void inicializar(Jugador* jugadorRef, TTF_Font* fuenteRef);
     void actualizar();
     void renderizar(SDL_Renderer* renderizador);
     void manejarEventos(SDL_Event& evento);

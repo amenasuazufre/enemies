@@ -10,7 +10,6 @@
 #include <string>
 #include "Jugador.h"
 #include "Nivel1.h"
-#include "TextoSimple.h"
 #include <SDL2/SDL_ttf.h>
 
 // Constantes del juego

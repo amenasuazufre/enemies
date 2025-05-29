@@ -240,29 +240,43 @@ void Juego::renderizarMenuPrincipal() {
     renderizarTextoSDLTTF("Aprende mientras juegas", (ANCHO_VENTANA - anchoSubtitulo) / 2, 190, colorAzulClaro);
     
     // Información de niveles
-    renderizarTextoSDLTTF("NIVEL 1: EL VALLE DEL TERROR ABSOLUTO", 400 - TextoSimple::obtenerAnchoTexto("NIVEL 1: EL VALLE DEL TERROR ABSOLUTO", 20) / 2, 250, colorDorado);
-    renderizarTextoSDLTTF("Tema: Matematicas - Valor Absoluto", 400 - TextoSimple::obtenerAnchoTexto("Tema: Matematicas - Valor Absoluto", 18) / 2, 280, colorVerdeClaro);
-    
-    // Controles del juego
-    renderizarTextoSDLTTF("CONTROLES:", 400 - TextoSimple::obtenerAnchoTexto("CONTROLES:", 24) / 2, 330, colorBlanco);
-    
+    int anchoNivel1Titulo, altoNivel1Titulo;
+    TTF_SizeText(fuente, "NIVEL 1: EL VALLE DEL TERROR ABSOLUTO", &anchoNivel1Titulo, &altoNivel1Titulo);
+    renderizarTextoSDLTTF("NIVEL 1: EL VALLE DEL TERROR ABSOLUTO", (ANCHO_VENTANA - anchoNivel1Titulo) / 2, 250, colorDorado);
+
+    // Nivel 1
+    int anchoNivel1Tema, altoNivel1Tema;
+    TTF_SizeText(fuente, "Tema: Matematicas - Valor Absoluto", &anchoNivel1Tema, &altoNivel1Tema);
+    renderizarTextoSDLTTF("Tema: Matematicas - Valor Absoluto", (ANCHO_VENTANA - anchoNivel1Tema) / 2, 280, colorVerdeClaro);
+
+    // Controles
+    int anchoControles, altoControles;
+    TTF_SizeText(fuente, "CONTROLES:", &anchoControles, &altoControles);
+    renderizarTextoSDLTTF("CONTROLES:", (ANCHO_VENTANA - anchoControles) / 2, 330, colorBlanco);
+
     renderizarTextoSDLTTF("Flechas", 200, 360, colorGrisClaro);
     renderizarTextoSDLTTF("Movimiento horizontal", 350, 360, colorGrisClaro);
-    
+
     renderizarTextoSDLTTF("Flecha arriba o ESPACIO", 200, 385, colorGrisClaro);
     renderizarTextoSDLTTF("Saltar", 500, 385, colorGrisClaro);
-    
+
     renderizarTextoSDLTTF("R", 200, 410, colorGrisClaro);
     renderizarTextoSDLTTF("Reiniciar nivel", 350, 410, colorGrisClaro);
-    
+
     // Objetivo
-    renderizarTextoSDLTTF("OBJETIVO: Llega a la plataforma dorada", 400 - TextoSimple::obtenerAnchoTexto("OBJETIVO: Llega a la plataforma dorada", 20) / 2, 450, colorDorado);
-    
+    int anchoObjetivo, altoObjetivo;
+    TTF_SizeText(fuente, "OBJETIVO: Llega a la plataforma dorada", &anchoObjetivo, &altoObjetivo);
+    renderizarTextoSDLTTF("OBJETIVO: Llega a la plataforma dorada", (ANCHO_VENTANA - anchoObjetivo) / 2, 450, colorDorado);
+
     // Instrucción para comenzar
-    renderizarTextoSDLTTF("PRESIONA ESPACIO PARA COMENZAR", 400 - TextoSimple::obtenerAnchoTexto("PRESIONA ESPACIO PARA COMENZAR", 28) / 2, 520, colorRojoClaro);
-    
+    int anchoComenzar, altoComenzar;
+    TTF_SizeText(fuente, "PRESIONA ESPACIO PARA COMENZAR", &anchoComenzar, &altoComenzar);
+    renderizarTextoSDLTTF("PRESIONA ESPACIO PARA COMENZAR", (ANCHO_VENTANA - anchoComenzar) / 2, 520, colorRojoClaro);
+
     // Créditos
-    renderizarTextoSDLTTF("Desarrollado en C++ con SDL2", 400 - TextoSimple::obtenerAnchoTexto("Desarrollado en C++ con SDL2", 14) / 2, 570, colorGrisAzul);
+    int anchoCreditos, altoCreditos;
+    TTF_SizeText(fuente, "Desarrollado en C++ con SDL2", &anchoCreditos, &altoCreditos);
+    renderizarTextoSDLTTF("Desarrollado en C++ con SDL2", (ANCHO_VENTANA - anchoCreditos) / 2, 570, colorGrisAzul);
 }
 
 void Juego::renderizarPantallaFinal() {
@@ -279,31 +293,63 @@ void Juego::renderizarPantallaFinal() {
     SDL_Color colorGris = {100, 100, 100, 255};
 
     // Título de felicitaciones
-    renderizarTextoSDLTTF("FELICITACIONES", 400 - TextoSimple::obtenerAnchoTexto("FELICITACIONES", 48) / 2, 100, colorNegro);
+    int anchoFelicitaciones, altoFelicitaciones;
+    TTF_SizeText(fuente, "FELICITACIONES", &anchoFelicitaciones, &altoFelicitaciones);
+    renderizarTextoSDLTTF("FELICITACIONES", (ANCHO_VENTANA - anchoFelicitaciones) / 2, 100, colorNegro);
     
     // Mensaje de completado
-    renderizarTextoSDLTTF("Has completado el Nivel 1", 400 - TextoSimple::obtenerAnchoTexto("Has completado el Nivel 1", 28) / 2, 170, colorGrisOscuro);
-    renderizarTextoSDLTTF("EL VALLE DEL TERROR ABSOLUTO", 400 - TextoSimple::obtenerAnchoTexto("EL VALLE DEL TERROR ABSOLUTO", 24) / 2, 210, colorGrisOscuro);
+    int anchoCompletado1, altoCompletado1;
+    TTF_SizeText(fuente, "Has completado el Nivel 1", &anchoCompletado1, &altoCompletado1);
+    renderizarTextoSDLTTF("Has completado el Nivel 1", (ANCHO_VENTANA - anchoCompletado1) / 2, 170, colorGrisOscuro);
+
+    int anchoCompletado2, altoCompletado2;
+    TTF_SizeText(fuente, "EL VALLE DEL TERROR ABSOLUTO", &anchoCompletado2, &altoCompletado2);
+    renderizarTextoSDLTTF("EL VALLE DEL TERROR ABSOLUTO", (ANCHO_VENTANA - anchoCompletado2) / 2, 210, colorGrisOscuro);
     
     // Información educativa
-    renderizarTextoSDLTTF("Aprendiste sobre:", 400 - TextoSimple::obtenerAnchoTexto("Aprendiste sobre:", 22) / 2, 270, colorMarron);
-    renderizarTextoSDLTTF("Matematicas - Valor Absoluto", 400 - TextoSimple::obtenerAnchoTexto("Matematicas - Valor Absoluto", 20) / 2, 300, colorMarron);
+    int anchoInfoEducativa1, altoInfoEducativa1;
+    TTF_SizeText(fuente, "Aprendiste sobre:", &anchoInfoEducativa1, &altoInfoEducativa1);
+    renderizarTextoSDLTTF("Aprendiste sobre:", (ANCHO_VENTANA - anchoInfoEducativa1) / 2, 270, colorMarron);
+
+    int anchoInfoEducativa2, altoInfoEducativa2;
+    TTF_SizeText(fuente, "Matematicas - Valor Absoluto", &anchoInfoEducativa2, &altoInfoEducativa2);
+    renderizarTextoSDLTTF("Matematicas - Valor Absoluto", (ANCHO_VENTANA - anchoInfoEducativa2) / 2, 300, colorMarron);
     
     // Estadísticas del juego
-    renderizarTextoSDLTTF("Habilidades desarrolladas:", 400 - TextoSimple::obtenerAnchoTexto("Habilidades desarrolladas:", 18) / 2, 350, colorVerdeOscuro);
-    renderizarTextoSDLTTF("- Coordinacion y reflejos", 400 - TextoSimple::obtenerAnchoTexto("- Coordinacion y reflejos", 16) / 2, 375, colorVerdeOscuro);
-    renderizarTextoSDLTTF("- Resolucion de problemas", 400 - TextoSimple::obtenerAnchoTexto("- Resolucion de problemas", 16) / 2, 395, colorVerdeOscuro);
-    renderizarTextoSDLTTF("- Perseverancia", 400 - TextoSimple::obtenerAnchoTexto("- Perseverancia", 16) / 2, 415, colorVerdeOscuro);
+    int anchoHabilidadesTitulo, altoHabilidadesTitulo;
+    TTF_SizeText(fuente, "Habilidades desarrolladas:", &anchoHabilidadesTitulo, &altoHabilidadesTitulo);
+    renderizarTextoSDLTTF("Habilidades desarrolladas:", (ANCHO_VENTANA - anchoHabilidadesTitulo) / 2, 350, colorVerdeOscuro);
+
+    int anchoHabilidad1, altoHabilidad1;
+    TTF_SizeText(fuente, "- Coordinacion y reflejos", &anchoHabilidad1, &altoHabilidad1);
+    renderizarTextoSDLTTF("- Coordinacion y reflejos", (ANCHO_VENTANA - anchoHabilidad1) / 2, 375, colorVerdeOscuro);
+
+    int anchoHabilidad2, altoHabilidad2;
+    TTF_SizeText(fuente, "- Resolucion de problemas", &anchoHabilidad2, &altoHabilidad2);
+    renderizarTextoSDLTTF("- Resolucion de problemas", (ANCHO_VENTANA - anchoHabilidad2) / 2, 395, colorVerdeOscuro);
+
+    int anchoHabilidad3, altoHabilidad3;
+    TTF_SizeText(fuente, "- Perseverancia", &anchoHabilidad3, &altoHabilidad3);
+    renderizarTextoSDLTTF("- Perseverancia", (ANCHO_VENTANA - anchoHabilidad3) / 2, 415, colorVerdeOscuro);
     
     // Próximos pasos
-    renderizarTextoSDLTTF("Proximamente: Nivel 2", 400 - TextoSimple::obtenerAnchoTexto("Proximamente: Nivel 2", 20) / 2, 460, colorMorado);
-    renderizarTextoSDLTTF("Las Ruinas de la Sabiduria Antigua", 400 - TextoSimple::obtenerAnchoTexto("Las Ruinas de la Sabiduria Antigua", 18) / 2, 485, colorMorado);
+    int anchoProximosPasos1, altoProximosPasos1;
+    TTF_SizeText(fuente, "Proximamente: Nivel 2", &anchoProximosPasos1, &altoProximosPasos1);
+    renderizarTextoSDLTTF("Proximamente: Nivel 2", (ANCHO_VENTANA - anchoProximosPasos1) / 2, 460, colorMorado);
+
+    int anchoProximosPasos2, altoProximosPasos2;
+    TTF_SizeText(fuente, "Las Ruinas de la Sabiduria Antigua", &anchoProximosPasos2, &altoProximosPasos2);
+    renderizarTextoSDLTTF("Las Ruinas de la Sabiduria Antigua", (ANCHO_VENTANA - anchoProximosPasos2) / 2, 485, colorMorado);
     
     // Instrucción para salir
-    renderizarTextoSDLTTF("Presiona ESC para salir", 400 - TextoSimple::obtenerAnchoTexto("Presiona ESC para salir", 22) / 2, 530, colorRojoOscuro);
+    int anchoSalir, altoSalir;
+    TTF_SizeText(fuente, "Presiona ESC para salir", &anchoSalir, &altoSalir);
+    renderizarTextoSDLTTF("Presiona ESC para salir", (ANCHO_VENTANA - anchoSalir) / 2, 530, colorRojoOscuro);
     
     // Créditos
-    renderizarTextoSDLTTF("Gracias por jugar", 400 - TextoSimple::obtenerAnchoTexto("Gracias por jugar", 16) / 2, 570, colorGris);
+    int anchoGracias, altoGracias;
+    TTF_SizeText(fuente, "Gracias por jugar", &anchoGracias, &altoGracias);
+    renderizarTextoSDLTTF("Gracias por jugar", (ANCHO_VENTANA - anchoGracias) / 2, 570, colorGris);
 }
 
 void Juego::limpiar() {

@@ -19,7 +19,7 @@ Nivel1::~Nivel1() {
     limpiar();
 }
 
-void Nivel1::inicializar(Jugador* jugadorRef) {
+void Nivel1::inicializar(Jugador* jugadorRef, TTF_Font* fuenteRef) {
     jugador = jugadorRef;
     nivelCompletado = false;
     jugadorMuerto = false;
@@ -36,7 +36,7 @@ void Nivel1::inicializar(Jugador* jugadorRef) {
     crearCubosEducativos();
     
     // Inicializar panel lateral
-    panelLateral.inicializar();
+    panelLateral.inicializar(fuenteRef);
     
     cout << "Nivel 1 inicializado: El Valle del Terror Absoluto" << endl;
 }

@@ -3,7 +3,6 @@
  */
 
 #include "PanelLateral.h"
-#include "TextoSimple.h"
 #include <iostream>
 #include <sstream>
 
@@ -24,7 +23,21 @@ PanelLateral::~PanelLateral() {
     // Destructor vacío - no hay recursos dinámicos que liberar
 }
 
-void PanelLateral::inicializar() {
+void PanelLateral::inicializar(TTF_Font* fuenteRef) {
+    if (fuenteRef) {
+        fuente = fuenteRef;
+    } else {
+        cout << "Error: Fuente de titulo invalida pasada a PanelLateral::inicializar" << endl;
+        cout << SDL_GetError();
+    }
+
+    // Cargar fuente para el cuerpo del texto
+    fuenteCuerpo = TTF_OpenFont("src/data/fonts/Recoleta-Regular.ttf", 18);
+    if (!fuenteCuerpo) {
+        cout << "Error al cargar fuente de cuerpo para PanelLateral: " << TTF_GetError() << endl;
+        cout << SDL_GetError();
+    }
+
     visible = false;
     tiempoInicio = 0;
     informacion = "";
@@ -85,17 +98,45 @@ void PanelLateral::renderizarFondo(SDL_Renderer* renderizador) {
 }
 
 void PanelLateral::renderizarTexto(SDL_Renderer* renderizador) {
+    if (!fuente || !fuenteCuerpo || !renderizador) return; // Asegurar que las fuentes sean cargadas.
+    
     // Título
-    TextoSimple::establecerColor(renderizador, 255, 255, 255); // Blanco
-    TextoSimple::renderizarTextoCentrado(renderizador, "INFORMACION", x + ancho/2, y + 10, 16);
+    SDL_Color colorBlanco = {255, 255, 255, 255};
+    SDL_Color colorNegro = {0, 0, 0, 255};
+    
+    // Renderizar título
+    SDL_Surface* superficieTitulo = TTF_RenderText_Solid(fuente, "INFORMACION", colorBlanco);
+    if (superficieTitulo) {
+        SDL_Texture* texturaTitulo = SDL_CreateTextureFromSurface(renderizador, superficieTitulo);
+        if (texturaTitulo) {
+            SDL_Rect tituloRect;
+            // Centrar el titulo horizontalmente
+            TTF_SizeText(fuente, "INFORMACION", &tituloRect.w, &tituloRect.h);
+            tituloRect.x = x + (ancho - tituloRect.w) / 2;
+            tituloRect.y = y + 10;
+            SDL_RenderCopy(renderizador, texturaTitulo, nullptr, &tituloRect);
+            SDL_DestroyTexture(texturaTitulo);
+        }
+        SDL_FreeSurface(superficieTitulo);
+    }
     
     // Contenido del texto
-    TextoSimple::establecerColor(renderizador, 0, 0, 0); // Negro
     int posY = y + 40;
     int espaciadoLinea = 18;
     
-    for (size_t i = 0; i < lineasTexto.size() && posY < y + alto - 20; i++) {
-        TextoSimple::renderizarTexto(renderizador, lineasTexto[i], x + 10, posY, 12);
+    for (const string& linea : lineasTexto) {
+        if (posY > y + alto - 20) break; // Previene renderización fuera del panel
+        
+        SDL_Surface* superficieLinea = TTF_RenderText_Solid(fuenteCuerpo, linea.c_str(), colorNegro);
+        if (superficieLinea) {
+            SDL_Texture* texturaLinea = SDL_CreateTextureFromSurface(renderizador, superficieLinea);
+            if (texturaLinea) {
+                SDL_Rect lineaRect = {x + 10, posY, superficieLinea->w, superficieLinea->h};
+                SDL_RenderCopy(renderizador, texturaLinea, nullptr, &lineaRect);
+                SDL_DestroyTexture(texturaLinea);
+            }
+            SDL_FreeSurface(superficieLinea);
+        }
         posY += espaciadoLinea;
     }
     
@@ -120,19 +161,20 @@ void PanelLateral::renderizarTexto(SDL_Renderer* renderizador) {
 void PanelLateral::dividirTextoEnLineas() {
     lineasTexto.clear();
     
-    if (informacion.empty()) return;
+    if (informacion.empty() || !fuenteCuerpo) return;
     
     istringstream stream(informacion);
     string palabra;
     string lineaActual = "";
-    const int maxCaracteresPorLinea = 28; // Aproximadamente para el ancho del panel
+    const int anchoContenidoPanel = ancho - 20;
     
     while (stream >> palabra) {
-        if (lineaActual.length() + palabra.length() + 1 <= maxCaracteresPorLinea) {
-            if (!lineaActual.empty()) {
-                lineaActual += " ";
-            }
-            lineaActual += palabra;
+        string testLine = lineaActual.empty() ? palabra : lineaActual + " " + palabra;
+        int testWidth;
+        TTF_SizeText(fuenteCuerpo, testLine.c_str(), &testWidth, nullptr);
+        
+        if (testWidth <= anchoContenidoPanel) {
+            lineaActual = testLine;
         } else {
             if (!lineaActual.empty()) {
                 lineasTexto.push_back(lineaActual);

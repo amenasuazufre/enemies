@@ -7,6 +7,7 @@
 #define PANEL_LATERAL_H
 
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
 #include <string>
 #include <vector>
 
@@ -20,6 +21,9 @@ private:
     std::string informacion;
     std::vector<std::string> lineasTexto;
     
+    TTF_Font* fuente;
+    TTF_Font* fuenteCuerpo;
+    
     // Métodos privados
     void dividirTextoEnLineas();
     void renderizarFondo(SDL_Renderer* renderizador);
@@ -30,7 +34,7 @@ public:
     ~PanelLateral();
     
     // Métodos principales
-    void inicializar();
+    void inicializar(TTF_Font* fuenteRef);
     void mostrar(const std::string& info);
     void actualizar();
     void renderizar(SDL_Renderer* renderizador);
