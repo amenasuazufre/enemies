@@ -11,6 +11,7 @@
 #include "Jugador.h"
 #include "Nivel1.h"
 #include "TextoSimple.h"
+#include <SDL2/SDL_ttf.h>
 
 // Constantes del juego
 const int ANCHO_VENTANA = 800;
@@ -33,6 +34,9 @@ private:
     bool ejecutando;
     EstadoJuego estadoActual;
     
+    // Puntero SDL_ttf
+    TTF_Font* fuente;
+    
     // Elementos del juego
     Jugador jugador;
     Nivel1 nivel1;
@@ -43,6 +47,9 @@ private:
     void renderizar();
     void renderizarMenuPrincipal();
     void renderizarPantallaFinal();
+    
+    // Helper para renderizar texto con SDL_ttf
+    void renderizarTextoSDLTTF(const std::string& texto, int x, int y, SDL_Color color);
 
 public:
     Juego();
