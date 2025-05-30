@@ -68,7 +68,6 @@ void Juego::ejecutar() {
         actualizar();
         renderizar();
         
-        // Controlar FPS (aproximadamente 60 FPS)
         SDL_Delay(16);
     }
 }
@@ -254,13 +253,13 @@ void Juego::renderizarMenuPrincipal() {
     TTF_SizeText(fuente, "CONTROLES:", &anchoControles, &altoControles);
     renderizarTextoSDLTTF("CONTROLES:", (ANCHO_VENTANA - anchoControles) / 2, 330, colorBlanco);
 
-    renderizarTextoSDLTTF("Flechas", 200, 360, colorGrisClaro);
+    renderizarTextoSDLTTF("Flechas ---> ", 200, 360, colorGrisClaro);
     renderizarTextoSDLTTF("Movimiento horizontal", 350, 360, colorGrisClaro);
 
-    renderizarTextoSDLTTF("Flecha arriba o ESPACIO", 200, 385, colorGrisClaro);
-    renderizarTextoSDLTTF("Saltar", 500, 385, colorGrisClaro);
+    renderizarTextoSDLTTF("Flecha arriba o ESPACIO ---> ", 200, 385, colorGrisClaro);
+    renderizarTextoSDLTTF("  Saltar", 500, 385, colorGrisClaro);
 
-    renderizarTextoSDLTTF("R", 200, 410, colorGrisClaro);
+    renderizarTextoSDLTTF("R ---> ", 200, 410, colorGrisClaro);
     renderizarTextoSDLTTF("Reiniciar nivel", 350, 410, colorGrisClaro);
 
     // Objetivo
