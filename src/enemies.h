@@ -1,3 +1,6 @@
+#ifndef ENEMIES_H
+#define ENEMIES_H
+
 #pragma once
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
