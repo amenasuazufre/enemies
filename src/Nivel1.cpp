@@ -35,6 +35,9 @@ void Nivel1::inicializar(Jugador* jugadorRef, TTF_Font* fuenteRef) {
     // Crear los cubos educativos del nivel
     crearCubosEducativos();
     
+    // Crear los enemigos del nivel
+    crearEnemigos();
+    
     // Inicializar panel lateral
     panelLateral.inicializar(fuenteRef);
     
@@ -77,11 +80,19 @@ void Nivel1::actualizar() {
     // Actualizar jugador
     jugador->actualizar();
     
+    // Actualizar enemigos
+    for (auto& enemigo : enemigos) {
+        enemigo.actualizar();
+    }
+    
     // Verificar colisiones con plataformas
     verificarColisionesPlataformas();
     
     // Verificar colisiones con cubos educativos
     verificarColisionesCubos();
+    
+    // Verificar colisiones con enemigos
+    verificarColisionesEnemigos();
     
     // Actualizar panel lateral
     panelLateral.actualizar();
@@ -137,6 +148,18 @@ void Nivel1::verificarColisionesCubos() {
     }
 }
 
+void Nivel1::verificarColisionesEnemigos() {
+    if (!jugador) return;
+    SDL_Rect rectJugador = jugador->obtenerRectanguloColision();
+    for (auto& enemigo : enemigos) {
+        if (enemigo.colisionaConJugador(rectJugador)) {
+            jugadorMuerto = true;
+            std::cout << "¡Jugador tocado por enemigo! Reiniciando nivel..." << std::endl;
+            break;
+        }
+    }
+}
+
 void Nivel1::verificarLimitesNivel() {
     if (!jugador) return;
     
@@ -160,6 +183,11 @@ void Nivel1::renderizar(SDL_Renderer* renderizador) {
     // Renderizar todos los cubos educativos
     for (auto& cubo : cubosEducativos) {
         cubo.renderizar(renderizador);
+    }
+    
+    // Renderizar todos los enemigos
+    for (auto& enemigo : enemigos) {
+        enemigo.renderizar(renderizador);
     }
     
     // Renderizar jugador
@@ -272,9 +300,21 @@ void Nivel1::crearCubosEducativos() {
     cout << "Creados " << cubosEducativos.size() << " cubos educativos para el Nivel 1" << endl;
 }
 
+void Nivel1::crearEnemigos() {
+    enemigos.clear();
+    // Ejemplo: un enemigo en cada plataforma (excepto suelo y meta)
+    // Plataformas: 0=suelo, 1-5=intermedias, 6=meta
+    for (size_t i = 1; i <= 5 && i < plataformas.size(); ++i) {
+        float ex = plataformas[i].obtenerX() + 10; // 10 px desde el borde
+        float ey = plataformas[i].obtenerY() - 20; // Encima de la plataforma
+        enemigos.emplace_back(&plataformas[i], ex, ey, 2.0f);
+    }
+}
+
 void Nivel1::limpiar() {
     plataformas.clear();
     cubosEducativos.clear();
+    enemigos.clear();
     jugador = nullptr; // No eliminamos el jugador, solo la referencia
     cout << "Nivel 1 limpiado" << endl;
 }
