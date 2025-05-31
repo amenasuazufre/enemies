@@ -13,6 +13,7 @@
 #include "Plataforma.h"
 #include "CuboEducativo.h"
 #include "PanelLateral.h"
+#include "enemies.h"
 
 class Nivel1 {
 private:
@@ -21,6 +22,7 @@ private:
     std::vector<Plataforma> plataformas;
     std::vector<CuboEducativo> cubosEducativos;
     PanelLateral panelLateral;
+    std::vector<Enemy> enemigos;
     
     // Estado del nivel
     bool nivelCompletado;
@@ -33,8 +35,10 @@ private:
     // Métodos privados
     void crearPlataformas();
     void crearCubosEducativos();
+    void crearEnemigos();
     void verificarColisionesPlataformas();
     void verificarColisionesCubos();
+    void verificarColisionesEnemigos();
     void verificarLimitesNivel();
 
 public:

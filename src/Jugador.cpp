@@ -78,7 +78,7 @@ void Jugador::actualizar() {
 }
 
 void Jugador::renderizar(SDL_Renderer* renderizador) {
-    // Dibujar jugador como rectángulo azul
+    // Dibujar jugador como cuadrado azul
     SDL_SetRenderDrawColor(renderizador, 0, 100, 255, 255); // Azul
     SDL_RenderFillRect(renderizador, &rectanguloColision);
     

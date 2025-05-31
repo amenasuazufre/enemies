@@ -3,7 +3,7 @@
 
 CXX = g++
 CXXFLAGS = -std=c++11 -Wall -Wextra -O2 $(shell pkg-config --cflags sdl2 SDL2_ttf)
-LIBS = $(shell pkg-config --libs sdl2 SDL2_ttf) -lSDL2main
+LIBS = $(shell pkg-config --libs sdl2 SDL2_ttf SDL2_image) -lSDL2main
 
 # Directorios
 SRC_DIR = src
@@ -43,7 +43,7 @@ run: $(TARGET)
 # Instalar dependencias (Ubuntu/Debian)
 install-deps:
 	sudo apt-get update
-	sudo apt-get install -y libsdl2-dev libsdl2-2.0-0 libsdl2-ttf-dev
+	sudo apt-get install -y libsdl2-dev libsdl2-2.0-0 libsdl2-ttf-dev libsdl2-image-dev
 
 # Verificar instalación de SDL2 y SDL2_ttf
 check-sdl:
